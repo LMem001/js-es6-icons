@@ -8,6 +8,7 @@
 // Creiamo una select con i tipi di icone e usiamola per filtrare le icone
 
 function insertInHtml(htmlAdr, color, family, prefix, name) {
+  // add class and style attributes to an html element
   let html = `<div style="color:${color}">
     <i class="${family} ${prefix}${name}"></i>
     <div class="title">${name}</div>
@@ -130,6 +131,7 @@ const icons = [
 const categories = [];
 
 icons.forEach((element) => {
+  // get the object's categories only one time
   if(categories.includes(element.category) == false) {
     categories.push(element.category);
   }
@@ -154,6 +156,7 @@ icons.forEach((element) => {
 const option = $("#type");
 
 categories.forEach((element) => {
+  // add categories to the option class
   let html = `<option value="${element}">${element}</option>`;
   option.append(html);
 });
@@ -161,6 +164,7 @@ categories.forEach((element) => {
 option.change(function() {
   iconHtml.html("");
   if(option.val() != "all") {
+    // show only the elements of the chosen category
     const chosenIcons = icons.filter((element) => {
       return element.category == option.val();
     });
@@ -168,6 +172,7 @@ option.change(function() {
       insertInHtml(iconHtml, element.color, element.family, element.prefix, element.name);
     });
   } else {
+      // reset to default
       icons.forEach((element) => {
         insertInHtml(iconHtml, element.color, element.family, element.prefix, element.name);
       });
