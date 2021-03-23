@@ -127,3 +127,9 @@ icons.forEach((element) => {
   </div>`
   iconHtml.append(html);
 });
+
+const cat = icons.filter((element) => {
+  return element.category == "food";
+});
+
+console.log(cat);
