@@ -7,6 +7,15 @@
 // Milestone 3
 // Creiamo una select con i tipi di icone e usiamola per filtrare le icone
 
+function insertInHtml(color, family, prefix, name) {
+  let html = `<div style="color:${color}">
+    <i class="${family} ${prefix}${name}"></i>
+    <div class="title">${name}</div>
+  </div>`
+  iconHtml.append(html);
+  return 0;
+}
+
 const icons = [
   {
     name: 'apple-alt',
@@ -139,11 +148,7 @@ icons.forEach((element) => {
   } else {
     element["color"] = colors[2];
   }
-  let html = `<div style="color:${element.color}">
-    <i class="${element.family} ${element.prefix}${element.name}"></i>
-    <div class="title">${element.name}</div>
-  </div>`
-  iconHtml.append(html);
+  insertInHtml(element.color, element.family, element.prefix, element.name);
 });
 
 const option = $("#type");
@@ -154,5 +159,7 @@ categories.forEach((element) => {
 });
 
 option.change(function() {
- console.log("ok");
+ const chosenIcons = icons.filter((element) => {
+   return element.category == option.val();
+ });
 });
