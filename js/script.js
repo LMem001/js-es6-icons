@@ -120,7 +120,7 @@ const icons = [
 
 iconHtml = $(".container .icons")
 
-icons.map((element) => {
+icons.forEach((element) => {
   let html = `<div>
     <i class="${element.family} ${element.prefix}${element.name}"></i>
     <div class="title">${element.name}</div>
