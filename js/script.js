@@ -131,6 +131,7 @@ const colors = ["red", "purple", "black"]
 iconHtml = $(".container .icons")
 
 icons.forEach((element) => {
+  // add color attribute to the object
   if(element.category == categories[0]) {
     element["color"] = colors[0];
   } else if(element.category == categories[1]) {
@@ -138,7 +139,6 @@ icons.forEach((element) => {
   } else {
     element["color"] = colors[2];
   }
-  console.log(element);
   let html = `<div style="color:${element.color}">
     <i class="${element.family} ${element.prefix}${element.name}"></i>
     <div class="title">${element.name}</div>
@@ -151,4 +151,8 @@ const option = $("#type");
 categories.forEach((element) => {
   let html = `<option value="${element}">${element}</option>`;
   option.append(html);
+});
+
+option.change(function() {
+ console.log("ok");
 });
