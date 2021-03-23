@@ -145,3 +145,10 @@ icons.forEach((element) => {
   </div>`
   iconHtml.append(html);
 });
+
+const option = $("#type");
+
+categories.forEach((element) => {
+  let html = `<option value="${element}">${element}</option>`;
+  option.append(html);
+});
