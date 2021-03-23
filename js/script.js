@@ -118,7 +118,12 @@ const icons = [
   },
 ];
 
-console.log(`cuia ${icons[0].name}`);
+iconHtml = $(".container .icons")
 
-// for(let i = 0; i < icons.length; i++) {
-// }
+icons.map((element) => {
+  let html = `<div>
+    <i class="${element.family} ${element.prefix}${element.name}"></i>
+    <div class="title">${element.name}</div>
+  </div>`
+  iconHtml.append(html);
+});
