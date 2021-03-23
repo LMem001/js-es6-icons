@@ -128,8 +128,10 @@ icons.forEach((element) => {
   iconHtml.append(html);
 });
 
-const cat = icons.filter((element) => {
-  return element.category == "food";
-});
+const categories = [];
 
-console.log(cat);
+icons.forEach((element) => {
+  if(categories.includes(element.category) == false) {
+    categories.push(element.category);
+  }
+});
