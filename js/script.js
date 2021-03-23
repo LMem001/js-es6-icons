@@ -7,12 +7,12 @@
 // Milestone 3
 // Creiamo una select con i tipi di icone e usiamola per filtrare le icone
 
-function insertInHtml(color, family, prefix, name) {
+function insertInHtml(htmlAdr, color, family, prefix, name) {
   let html = `<div style="color:${color}">
     <i class="${family} ${prefix}${name}"></i>
     <div class="title">${name}</div>
   </div>`
-  iconHtml.append(html);
+  htmlAdr.append(html);
   return 0;
 }
 
@@ -148,7 +148,7 @@ icons.forEach((element) => {
   } else {
     element["color"] = colors[2];
   }
-  insertInHtml(element.color, element.family, element.prefix, element.name);
+  insertInHtml(iconHtml, element.color, element.family, element.prefix, element.name);
 });
 
 const option = $("#type");
@@ -159,7 +159,17 @@ categories.forEach((element) => {
 });
 
 option.change(function() {
- const chosenIcons = icons.filter((element) => {
-   return element.category == option.val();
- });
+  iconHtml.html("");
+  if(option.val() != "all") {
+    const chosenIcons = icons.filter((element) => {
+      return element.category == option.val();
+    });
+    chosenIcons.forEach((element) => {
+      insertInHtml(iconHtml, element.color, element.family, element.prefix, element.name);
+    });
+  } else {
+      icons.forEach((element) => {
+        insertInHtml(iconHtml, element.color, element.family, element.prefix, element.name);
+      });
+  }
 });
